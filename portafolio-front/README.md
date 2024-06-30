@@ -27,9 +27,11 @@ git clone url
 ```
 
 *pasos para instalar las dependencias del frontend*
+```
 cd portafolio-front
 npm install
 npm run dev
+```
 
 *pasos backend*
 proximamente
@@ -40,28 +42,42 @@ proximamente
 ## Paqueterias instaladas
 **Front-End**
 * Material UI:
-1. Instalacion por defecto: 
-    npm install @mui/material @emotion/react @emotion/styled 
-2. Los estilos de componentes
-    npm install @mui/material @mui/styled-engine-sc styled-components
+1. Instalacion por defecto:
+```
+npm install @mui/material @emotion/react @emotion/styled 
+```
+2. Los estilos de componentes:
+```
+npm install @mui/material @mui/styled-engine-sc styled-components
+```
 3. Fuentes Roboto: 
-    npm install @fontsource/roboto
-    **NOTA AGREGAR LOS SIGUIENTES FUENTES AL ARCHIVO MAIN**
-    import '@fontsource/roboto/300.css';
-    import '@fontsource/roboto/400.css';
-    import '@fontsource/roboto/500.css';
-    import '@fontsource/roboto/700.css';
+```
+npm install @fontsource/roboto
+**NOTA AGREGAR LOS SIGUIENTES FUENTES AL ARCHIVO MAIN**
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+```
 4. Agregar los iconos de MUI
-    npm install @mui/icons-material
+```
+npm install @mui/icons-material
+```
 5. Opcional Lab:
-    npm install @mui/lab
+```
+npm install @mui/lab
+```
 
 * React Router DOM
-1. Instalar npm install react-router-dom@6
+1. Instalar 
+```
+npm install react-router-dom@6
 NOTA: hacer la importacion del modulo 
 *import { BrowserRouter } from "react-router-dom";*
 y englobar toda la aplicacion dentro de ella del main o app
-
+```
 * AOS (Animation On Scroll)
 1. Biblioteca de desplazamiento
+```
 npm install aos --save
+```
