@@ -1,5 +1,5 @@
 //importaciones de react
-import React from 'react';
+import React, { useContext } from 'react';
 
 //importacion del enrutador
 import Router from './routes/Router';
@@ -23,18 +23,29 @@ import '@fontsource/roboto/700.css';
 // import 'aos/dist/aos.css';
 
 //importacion del contexto de la aplicacion
+import { portafolioContext } from './context/portafolioContext';
 import ContextProvider from './context/ContextProvider';
 
+//funcion que engloba el contexto para acceder a él
+const AppContent = () => {
+  const { colorTheme } = useContext(portafolioContext);
+  const mainColor = '#3F51B5'; // ejemplo que define el color principal dinámico
+  const isDarkMode = colorTheme; // ejemplo que define si está en modo oscuro o no
+
+  return (
+    <ThemeProvider theme={theme(mainColor, isDarkMode)}>
+      <CssBaseline />
+      <Router /> {/* este es el contenido */}
+    </ThemeProvider>
+  );
+};
+
+// Funcion principal
 const App = () => {
-  const mainColor = '#3F51B5'; //ejemplo que define el color principal dinámico
-  const isDarkMode = false; //ejemplo que define si está en modo oscuro o no
   return (
     <>
       <ContextProvider>
-        <ThemeProvider theme={theme(mainColor, isDarkMode)}>
-          <CssBaseline />
-          <Router /> {/* este es el contenido */}
-        </ThemeProvider>
+        <AppContent />
       </ContextProvider>
     </>
   )

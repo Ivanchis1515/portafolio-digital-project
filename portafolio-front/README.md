@@ -68,16 +68,22 @@ npm install @mui/icons-material
 npm install @mui/lab
 ```
 
-* React Router DOM
-1. Instalar 
+5. React Router DOM
 ```
 npm install react-router-dom@6
 NOTA: hacer la importacion del modulo 
 *import { BrowserRouter } from "react-router-dom";*
 y englobar toda la aplicacion dentro de ella del main o app
 ```
-* AOS (Animation On Scroll)
-1. Biblioteca de desplazamiento
+6. AOS (Animation On Scroll) Biblioteca de desplazamiento
 ```
 npm install aos --save
+```
+7. libreria para carrusel
+```
+npm install slick-carousel react-slick
+Importar la libreria
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 ```

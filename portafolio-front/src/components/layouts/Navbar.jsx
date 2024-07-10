@@ -1,9 +1,5 @@
 //importaciones de react
-import React, {useState} from 'react';
-
-//importacion de las proptypes
-import PropTypes from 'prop-types';
-
+import React, { useState, useContext } from 'react';
 
 //importaciones de estilo de MUI
 import { AppBar, Container, Toolbar, Box, MenuItem, Button, Typography, Drawer, Divider } from '@mui/material';
@@ -17,12 +13,19 @@ const logoStyle = {
     width: '140px',
     height: 'auto',
     cursor: 'pointer',
-  };
+};
 
+//importacion del contexto
+import { portafolioContext } from '../../context/portafolioContext';
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
+    //variables globales
+    const {colorTheme, setColorTheme} = useContext(portafolioContext);
 
+    // PANTALLAS PEQUEÑAS
+    //estado para capturar la apertura del menu
+    const [open, setOpen] = useState(false);
+    //funcion para abrir el menu
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
@@ -122,9 +125,9 @@ const Navbar = () => {
                                     size = "small"
                                     aria-label = "Cambiar el tema"
                                     sx={{minWidth:"32px", height:"32px", p:"4px"}}
+                                    onClick = {() => setColorTheme(!colorTheme)}
                                 >
-                                    <ModeNightRoundedIcon />
-
+                                    {colorTheme ? <WbSunnyRoundedIcon /> : <ModeNightRoundedIcon />}
                                 </Button>
                             </Box>
                             <Button
