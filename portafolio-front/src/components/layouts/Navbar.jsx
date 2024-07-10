@@ -5,9 +5,11 @@ import React, { useState, useContext } from 'react';
 import { AppBar, Container, Toolbar, Box, MenuItem, Button, Typography, Drawer, Divider } from '@mui/material';
 
 //recursos
-import MenuIcon from '@mui/icons-material/Menu';
-import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
-import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
+import MenuIcon from '@mui/icons-material/Menu'; //icono menu hamburguesa
+import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'; //icno sol
+import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded'; //icono luna
+import LinkedInIcon from '@mui/icons-material/LinkedIn'; //icono linkedin
+import GitHubIcon from '@mui/icons-material/GitHub'; //icono git
 
 const logoStyle = {
     width: '140px',
@@ -82,25 +84,25 @@ const Navbar = () => {
                                     // onClick={() => ScrollToSection("Nombre_seccion")}
                                     sx={{py:"6px", px:"12px"}}
                                 >
-                                    <Typography variant = "body2" color="text.primary">Features</Typography>
+                                    <Typography variant = "body2" color="text.primary">Inicio</Typography>
                                 </MenuItem>
                                 <MenuItem
                                     // onClick={() => ScrollToSection("Nombre_seccion")}
                                     sx={{py:"6px", px:"12px"}}
                                 >
-                                    <Typography variant = "body2" color="text.primary">Testimonials</Typography>
+                                    <Typography variant = "body2" color="text.primary">Proyectos</Typography>
                                 </MenuItem>
                                 <MenuItem
                                     // onClick={() => ScrollToSection("Nombre_seccion")}
                                     sx={{py:"6px", px:"12px"}}
                                 >
-                                    <Typography variant = "body2" color="text.primary">Highlights</Typography>
+                                    <Typography variant = "body2" color="text.primary">Habilidades</Typography>
                                 </MenuItem>
                                 <MenuItem
                                     // onClick={() => ScrollToSection("Nombre_seccion")}
                                     sx={{py:"6px", px:"12px"}}
                                 >
-                                    <Typography variant = "body2" color="text.primary">Pricing</Typography>
+                                    <Typography variant = "body2" color="text.primary">Reconocimientos</Typography>
                                 </MenuItem>
                                 <MenuItem
                                     // onClick={() => ScrollToSection("Nombre_seccion")}
@@ -125,14 +127,23 @@ const Navbar = () => {
                                     size = "small"
                                     aria-label = "Cambiar el tema"
                                     sx={{minWidth:"32px", height:"32px", p:"4px"}}
-                                    onClick = {() => setColorTheme(!colorTheme)}
                                 >
-                                    {colorTheme ? <WbSunnyRoundedIcon /> : <ModeNightRoundedIcon />}
+                                    <LinkedInIcon />
+                                </Button>
+                            </Box>
+                            <Box sx={{maxWidth: "32px"}}>
+                                <Button
+                                    variant = "text"
+                                    size = "small"
+                                    aria-label = "Cambiar el tema"
+                                    sx={{minWidth:"32px", height:"32px", p:"4px"}}
+                                >
+                                    <GitHubIcon />
                                 </Button>
                             </Box>
                             <Button
                                 color = "primary"
-                                variant = "contained"
+                                variant = "text"
                                 size = "small"
                                 target = "_blank"
                             >
@@ -146,6 +157,18 @@ const Navbar = () => {
                             >
                                 Sign up
                             </Button>
+                            <Divider orientation="vertical" flexItem sx={{marginLeft:"10px"}}/>
+                            <Box sx={{maxWidth: "32px"}}>
+                                <Button
+                                    variant = "text"
+                                    size = "small"
+                                    aria-label = "Cambiar el tema"
+                                    sx={{minWidth:"32px", height:"32px", p:"4px"}}
+                                    onClick = {() => setColorTheme(!colorTheme)}
+                                >
+                                    {colorTheme ? <WbSunnyRoundedIcon /> : <ModeNightRoundedIcon />}
+                                </Button>
+                            </Box>
                         </Box>
                         {/* ./colormode */}
                         {/* ./content lg */}
@@ -161,7 +184,7 @@ const Navbar = () => {
                             >
                                 <MenuIcon />
                             </Button>
-                            <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
+                            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                                 <Box 
                                     sx={{
                                         minWidth: '60dvw',
@@ -177,8 +200,9 @@ const Navbar = () => {
                                             alignItems: 'end',
                                             flexGrow: 1,
                                         }}
+                                        onClick = {() => setColorTheme(!colorTheme)}
                                     >
-
+                                        {colorTheme ? <WbSunnyRoundedIcon /> : <ModeNightRoundedIcon />}
                                     </Box>
                                     <MenuItem
                                         // onClick={() => ScrollToSection("Nombre_seccion")}
@@ -210,6 +234,19 @@ const Navbar = () => {
                                     >
                                         <Typography variant = "body2" color="text.primary">FAQ</Typography>
                                     </MenuItem>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'flex-start',
+                                            alignItems: 'center',
+                                            gap: 1, // Espacio entre íconos
+                                            mb: 2, // Margen inferior
+                                            marginLeft:"10px"
+                                        }}
+                                    >
+                                        <LinkedInIcon />
+                                        <GitHubIcon />
+                                    </Box>
                                     <Divider />
                                     <MenuItem>
                                         <Button
