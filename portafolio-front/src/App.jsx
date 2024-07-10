@@ -19,7 +19,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 const App = () => {
-  const mainColor = '#2196f3'; //ejemplo que define el color principal dinámico
+  const mainColor = '#3F51B5'; //ejemplo que define el color principal dinámico
   const isDarkMode = false; //ejemplo que define si está en modo oscuro o no
   return (
     <>
