@@ -9,7 +9,7 @@ const BannerHeader = () => {
         >
             <Grid // grid principal
                 container
-                spacing={2}
+                spacing={12}
                 justifyContent="flex-start"
                 alignItems="center"
                 style={{ height: '100vh' }} // Ajuste de altura para centrar contenido
@@ -30,7 +30,7 @@ const BannerHeader = () => {
                 <Grid //grid imagen principal 
                     item xs={6}
                 >
-                    <img src="https://img.freepik.com/foto-gratis/reunion-empresarios-oficina-trabajo_23-2148908910.jpg" alt="Imagen" width="100%" height="100%"/>
+                    <img src="https://img.freepik.com/fotos-premium/empresario-su-equipo_605022-1819.jpg" alt="Imagen/Principal" width="100%" height="100%"/>
                 </Grid>
             </Grid>
         </Container>

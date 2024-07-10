@@ -18,15 +18,24 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+//importacion de la libreria Animated on Scroll
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
+
+//importacion del contexto de la aplicacion
+import ContextProvider from './context/ContextProvider';
+
 const App = () => {
   const mainColor = '#3F51B5'; //ejemplo que define el color principal dinámico
   const isDarkMode = false; //ejemplo que define si está en modo oscuro o no
   return (
     <>
-      <ThemeProvider theme={theme(mainColor, isDarkMode)}>
-        <CssBaseline />
-        <Router />
-      </ThemeProvider>
+      <ContextProvider>
+        <ThemeProvider theme={theme(mainColor, isDarkMode)}>
+          <CssBaseline />
+          <Router /> {/* este es el contenido */}
+        </ThemeProvider>
+      </ContextProvider>
     </>
   )
 }
