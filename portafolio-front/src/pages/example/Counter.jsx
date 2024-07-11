@@ -2,7 +2,7 @@
 import { useState } from 'react';
 //recursos
 import reactLogo from '../../assets/react.svg';
-import './Counter.css'
+// import './Counter.css'
 
 function Counter() {
     const [count, setCount] = useState(0)

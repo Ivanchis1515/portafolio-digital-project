@@ -5,10 +5,10 @@ import React, { useContext } from 'react';
 import Router from './routes/Router';
 
 //Uso de la libreria CssBaseLine para el estilo MUI
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 //importacion del tema aplicado
-import { ThemeProvider } from '@emotion/react';
+// import { ThemeProvider } from '@emotion/react';
 //importacion del tema personalizado
 import theme from './themes/Theme';
 

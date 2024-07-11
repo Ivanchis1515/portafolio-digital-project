@@ -40,7 +40,7 @@ const Navbar = () => {
                     boxShadow: 0,
                     bgcolor: "transparent",
                     backgroundImage: "none",
-                    mt: 2
+                    mt: 2,
                 }}
             >
                 {/* Content lg */}
