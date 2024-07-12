@@ -11,6 +11,10 @@ import { styled } from '@mui/system';
 //layouts
 import Navbar from '../../components/layouts/Navbar';
 
+//commons
+import CarouselComponent from '../../components/common/CarouselComponent';
+import AboutComponent from '../../components/common/AboutComponent';
+
 //creacion del nuevo modulo de imagen
 const Img = styled("img")({
     width: "50%",
@@ -34,6 +38,7 @@ const Home = () => {
         <>
             <Box>
                 <Navbar />
+                <AboutComponent />
                 <Grid
                     container //grid tipo contenedor ROW
                 >
@@ -59,6 +64,7 @@ const Home = () => {
                                     pt: { xs: 14, sm: 20 },
                                     pb: { xs: 8, sm: 12 },
                                 }}
+                                data-aos="fade-up"
                             >
                                 <Grid
                                     container
@@ -66,21 +72,21 @@ const Home = () => {
                                     alignItems="center"
                                 >
                                     <Grid item sm={12} md={6} lg={6} xl={8} order={{ xs: 2, sm: 2, md: 1 }}>
-                                        <Box sx={{ textAlign: { xs: 'center', sm: 'center', md: 'left', lg: 'left'} }}>
-                                            <Typography 
-                                                variant='h1' 
-                                                fontWeight="bold" 
+                                        <Box sx={{ textAlign: { xs: 'center', sm: 'center', md: 'left', lg: 'left' } }}>
+                                            <Typography
+                                                variant='h1'
+                                                fontWeight="bold"
                                                 sx={{ //detecta si existe pantalla pequeña
-                                                    fontSize: matchesSM 
-                                                        ? 'h3.fontSize' 
+                                                    fontSize: matchesSM
+                                                        ? 'h3.fontSize'
                                                         : matchesMD ? 'h3.fontSize'
-                                                        : 'h1.fontSize',
+                                                            : 'h1.fontSize',
                                                 }}
                                             >
                                                 Desarrolladores Full Stack.
                                             </Typography>
                                         </Box>
-                                        <Box sx={{textAlign: { xs: 'center', sm: 'center', md: 'left', lg: 'left' }}}>
+                                        <Box sx={{ textAlign: { xs: 'center', sm: 'center', md: 'left', lg: 'left' } }}>
                                             <Typography variant='body1' sx={{ mt: 2 }}>
                                                 Ingenieros de front-end y diseñadores de UI/UX que ayudan a las empresas emergentes a convertir sus visiones en una realidad digital.
                                             </Typography>
@@ -99,15 +105,47 @@ const Home = () => {
                                             <Img
                                                 src="https://img.freepik.com/fotos-premium/empresario-su-equipo_605022-1819.jpg"
                                                 alt="Imagen Principal"
-                                                style={{ width: "100%" }}
+                                                style={{ width: "80%" }}
                                             />
                                         </Box>
                                     </Grid>
                                 </Grid>
+
                             </Container>
+
                         </Box>
                     </Grid>
                 </Grid>
+
+                {/* Carrusel */}
+                <Grid container alignItems="center" justifyContent="center">
+                    <Grid item sm={12} md={12} lg={4}>
+                        <Box sx={{ textAlign: { xs: 'center', sm: 'center', md: 'center', lg: 'center' } }}>
+                            <Typography
+                                variant='h1'
+                                // fontWeight="bold"
+                                sx={{ //detecta si existe pantalla pequeña
+                                    fontSize: matchesSM
+                                        ? 'h3.fontSize'
+                                        : matchesMD ? 'h3.fontSize'
+                                            : 'h2.fontSize',
+                                }}
+                            >
+                                Proyectos
+                            </Typography>
+                        </Box>
+                        <Box sx={{ textAlign: { xs: 'center', sm: 'center', md: 'center', lg: 'center' } }}>
+                            <Typography variant='body1' sx={{ mt: 2 }}>
+                                Hecha un vistazo a los proyectos que han consolidado nuestra presencia en el mercado
+                            </Typography>
+                        </Box>
+                    </Grid>
+                    <Grid item sm={12} md={12} lg={12}>
+                        <CarouselComponent />
+                    </Grid>
+                </Grid>
+                {/* ./carrusel */}
+
             </Box>
         </>
     )

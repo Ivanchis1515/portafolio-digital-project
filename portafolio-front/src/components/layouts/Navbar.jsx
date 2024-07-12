@@ -2,9 +2,12 @@
 import React, { useState, useContext } from 'react';
 
 //importaciones de estilo de MUI
-import { AppBar, Container, Toolbar, Box, MenuItem, Button, Typography, Drawer, Divider } from '@mui/material';
+import { AppBar, Container, Toolbar, Box, MenuItem, Button, Typography, Drawer, Divider, useTheme } from '@mui/material';
 
 //recursos
+import HomeIcon from '@mui/icons-material/Home'; //icono casa
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; //icono usuario´
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter'; //icono maletin
 import MenuIcon from '@mui/icons-material/Menu'; //icono menu hamburguesa
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'; //icno sol
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded'; //icono luna
@@ -21,6 +24,9 @@ const logoStyle = {
 import { portafolioContext } from '../../context/portafolioContext';
 
 const Navbar = () => {
+    //uso del tema definido
+    const theme = useTheme();
+
     //variables globales
     const {colorTheme, setColorTheme} = useContext(portafolioContext);
 
@@ -198,7 +204,8 @@ const Navbar = () => {
                                             display: 'flex',
                                             flexDirection: 'column',
                                             alignItems: 'end',
-                                            flexGrow: 1,
+                                            flexGrow: 1, 
+                                            color: theme.palette.primary.main
                                         }}
                                         onClick = {() => setColorTheme(!colorTheme)}
                                     >
