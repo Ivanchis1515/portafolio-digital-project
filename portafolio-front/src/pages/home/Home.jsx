@@ -14,6 +14,10 @@ import Navbar from '../../components/layouts/Navbar';
 //commons
 import CarouselComponent from '../../components/common/CarouselComponent';
 import AboutComponent from '../../components/common/AboutComponent';
+//Contacto-Seccion Footer
+import ContactFooter from '../../components/common/ContactFooter';
+import Skills from '../../components/common/Skills';
+// import ContactFoot from '../../components/common/ContactFoot'
 
 //creacion del nuevo modulo de imagen
 const Img = styled("img")({
@@ -38,7 +42,6 @@ const Home = () => {
         <>
             <Box>
                 <Navbar />
-                <AboutComponent />
                 <Grid
                     container //grid tipo contenedor ROW
                 >
@@ -116,7 +119,8 @@ const Home = () => {
                         </Box>
                     </Grid>
                 </Grid>
-
+                {/* Sobre nosotros */}
+                <AboutComponent />
                 {/* Carrusel */}
                 <Grid container alignItems="center" justifyContent="center">
                     <Grid item sm={12} md={12} lg={4}>
@@ -145,7 +149,17 @@ const Home = () => {
                     </Grid>
                 </Grid>
                 {/* ./carrusel */}
-
+                <Grid container spacing={1} alignItems="center" justifyContent="center">
+                    <Grid item lg={6}>
+                        <Typography variant="h2" textAlign="center">
+                            Habilidades que hemos adquirido a lo largo del tiempo
+                        </Typography>
+                    </Grid>
+                    <Grid item sm={12} lg={12}>
+                        <Skills />
+                    </Grid>
+                </Grid>
+                <ContactFooter/>
             </Box>
         </>
     )
