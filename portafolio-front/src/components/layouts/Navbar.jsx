@@ -60,6 +60,7 @@ const Navbar = () => {
                 sx={{
                     boxShadow: 0,
                     bgcolor: "transparent",
+                    backgroundImage: 'none',
                     mt: 2,
                 }}
             >
