@@ -1,119 +1,185 @@
-import React, { useState } from 'react';
-import { Box, Typography, Button, IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+//importaciones de react
+import React, { useState, useEffect, useRef } from 'react';
+//componentes de MUI
+import { Box, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
+//recursos
+import TeamH from '../../assets/images/logoADM.jpg';
+import Vite from '../../assets/images/svg/vite.svg';
+import PHPIcon from '../../assets/images/svg/php.svg';
+import ReactIcon from '../../assets/images/svg/react.svg';
+import BootstrapIcon from '../../assets/images/svg/bootstrap.svg';
+import JavaScriptIcon from '../../assets/images/svg/javascript.svg';
+import FigmaIcon from '../../assets/images/svg/figma.svg';
+import FirebaseIcon from '../../assets/images/svg/firebase.svg';
 
-const images = [
-    'https://images.pexels.com/photos/991012/pexels-photo-991012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/921294/pexels-photo-921294.png?auto=compress&cs=tinysrgb&h=750&w=1260',
-    'https://images.pexels.com/photos/92733/pexels-photo-92733.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
-    'https://images.pexels.com/photos/1008732/pexels-photo-1008732.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
-    'https://images.pexels.com/photos/1029614/pexels-photo-1029614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+//datos ficticios
+const games = [
+  {
+    title: 'Team Hernández',
+    description: 'Sistema de gestión administrativa para un gimnasio centralizado para eficientizar los registros del gimnasio.',
+    imageUrl: TeamH,
+    urlProject: 'https://github.com/Ivanchis1515/TeamHernandez',
+    technologies: [
+      { name: 'Php', iconUrl: PHPIcon },
+      { name: 'JavaScript', iconUrl: JavaScriptIcon }
+    ],
+  },
+  {
+    title: 'FIX-PHONE',
+    description: 'Plataforma proveedora de servicios para los dispositivos moviles en multiples marcas.',
+    imageUrl: 'https://fix-phone-b464a.web.app/assets/logo-75013d93.png',
+    urlProject: 'https://fix-phone-b464a.web.app/',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+      { name: 'Firebase', iconUrl: FirebaseIcon },
+      { name: 'Figma', iconUrl: FigmaIcon }
+    ],
+  },
+  {
+    title: 'Criptografia de transacciones',
+    description: 'A traves de la criptografía, se creo una plataforma de transacciones encriptadas.',
+    imageUrl: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/firebase_logo_icon_171157.png',
+    urlProject: 'https://cripto-270b6.firebaseapp.com/',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+      { name: 'Firebase', iconUrl: FirebaseIcon },
+      { name: 'Figma', iconUrl: FigmaIcon }
+    ],
+  },
+  {
+    title: 'React-WeatherApi',
+    description: 'Aplicacion de clima consumiendo la API de openweathermap, diagnosticos en tiempo real y diseño moderno.',
+    imageUrl: Vite,
+    urlProject: 'https://github.com/Ivanchis1515/React-WeatherAPIMap',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+    ],
+  },
 ];
 
-const CarouselCardComponent = () => {
-    const [current, setCurrent] = useState(0);
+//cartas por separado con la informacion 
+const GameCard = ({ game, active }) => (
+  //estas cartas reciben los atributos del arreglo games
+  <Card
+    onClick={() => window.open(game.urlProject, '_blank')}
+    sx={{
+      margin: '0 15px',
+      width: active ? '500px' : '320px',
+      height: '400px',
+      display: 'flex',
+      alignItems: 'flex-end',
+      background: `url(${game.imageUrl}) center center / cover no-repeat`,
+      borderRadius: '16px',
+      overflow: 'hidden',
+      position: 'relative',
+      cursor: 'pointer',
+      transition: 'all 0.4s ease-in-out',
+      boxShadow: active ? '12px 40px 40px rgba(0, 0, 0, 0.25)' : 'none',
+      '&::after': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        left: 0,
+        top: 0,
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+      },
+    }}
+  >
+        <Box
+      sx={{
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        display: 'flex',
+        gap: '8px',
+      }}
+    >
+      {game.technologies.map((tech, index) => (
+        <img
+          key={index}
+          src={tech.iconUrl}
+          alt={tech.name}
+          style={{ width: '24px', height: '24px' }}
+        />
+      ))}
+    </Box>
+    <CardContent
+      sx={{
+        padding: '0 24px 12px',
+        color: '#fff',
+        position: 'relative',
+        zIndex: 1,
+        overflow: 'hidden',
+        transform: active ? 'none' : 'translateY(calc(100% - 54px))',
+        transition: 'all 0.4s ease-in-out',
+        '& p': {
+          opacity: active ? 1 : 0,
+          transform: active ? 'translateY(0)' : 'translateY(32px)',
+          transition: 'all 0.4s ease-in-out 0.2s',
+        },
+      }}
+    >
+      <Typography variant="h3" sx={{ marginBottom: '10px', fontSize: '28px', lineHeight: '36px' }}>{game.title}</Typography>
+      <Typography>{game.description}</Typography>
+    </CardContent>
+  </Card>
+);
 
-    const handleNext = () => {
-        setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    };
+//componente principal
+const CarouselComponent = () => {
+  //variable para tomar las imagen actual
+  const [currentIndex, setCurrentIndex] = useState(0);
+  //variable para guardar la imagen que esta activa
+  const [activeIndex, setActiveIndex] = useState(0);
+  //detecta su la pantalla se redimensiona
+  const isSmallerScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const containerRef = useRef(null);
 
-    const handlePrev = () => {
-        setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-    };
-    return (
-        <>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % (games.length * 2)); // Duplicamos la longitud
+    }, 3000); // Cambia cada 3 segundos
 
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100vh',
-                    // backgroundColor: '#eaeaea',
-                }}
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        maxWidth: 900,
-                        maxHeight: 550,
-                        width: '100%',
-                        height: '100%',
-                        overflow: 'hidden',
-                        position: 'relative',
-                    }}
-                >
-                    {images.map((img, index) => (
-                        <Box
-                            key={index}
-                            sx={{
-                                display: current === index ? 'flex' : 'none',
-                                width: '100%',
-                                height: '100%',
-                                alignItems: 'center',
-                                justifyContent: 'flex-end',
-                                position: 'absolute',
-                                transition: '0.6s all linear',
-                                backgroundColor: '#fff',
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    width: '60%',
-                                    height: '100%',
-                                    backgroundImage: `url(${img})`,
-                                    backgroundPosition: 'center',
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundSize: 'cover',
-                                }}
-                            />
-                            <Box
-                                sx={{
-                                    height: '100%',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center',
-                                    padding: '0 40px',
-                                    width: '40%',
-                                }}
-                            >
-                                <Typography variant="subtitle2" sx={{ letterSpacing: 3, textTransform: 'uppercase', color: '#7E7E7E' }}>
-                                    {`Subtitle ${index + 1}`}
-                                </Typography>
-                                <Typography variant="h3" sx={{ letterSpacing: 3, color: '#2C2C2C', mt: 1 }}>
-                                    {`Title ${index + 1}`}
-                                </Typography>
-                                <Typography sx={{ mt: 3, color: '#7e7e7e', lineHeight: '22px' }}>
-                                    {`Description for image ${index + 1}`}
-                                </Typography>
-                                <Button sx={{ mt: 3, textTransform: 'uppercase', letterSpacing: 3 }}>
-                                    {`Button ${index + 1}`}
-                                </Button>
-                            </Box>
-                        </Box>
-                    ))}
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            right: 0,
-                            bottom: 0,
-                            backgroundColor: '#fff',
-                            zIndex: 2,
-                        }}
-                    >
-                        <IconButton onClick={handlePrev}>
-                            <ArrowBackIcon />
-                        </IconButton>
-                        <IconButton onClick={handleNext}>
-                            <ArrowForwardIcon />
-                        </IconButton>
-                    </Box>
-                </Box>
-            </Box>
-        </>
-    )
-}
+    return () => clearInterval(interval);
+  }, []);
 
-export default CarouselCardComponent
+  useEffect(() => {
+    setActiveIndex(currentIndex % games.length); // Solo consideramos la longitud original para el índice activo
+  }, [currentIndex]);
+
+  return (
+    <Box sx={{ padding: '60px 50px' }}>
+      <Typography variant="h2" sx={{ marginBottom: '48px', paddingBottom: '16px', fontSize: '20px', lineHeight: '28px', fontWeight: '700', position: 'relative', textTransform: 'capitalize', width: '400px', '&::before': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '100%', background: '#f2f2f2' }, '&::after': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '32px', background: '#e73700' } }}>
+        trending games
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          overflow: 'hidden',
+        }}
+        ref={containerRef}
+      >
+        {[...games, ...games].map((game, index) => ( // Duplicamos el array
+          <Box
+            key={index}
+            sx={{
+              minWidth: '320px',
+              flexShrink: 0,
+              transition: 'transform 0.5s ease-in-out',
+              transform: `translateX(-${currentIndex * 320}px)`,
+            }}
+          >
+            <GameCard game={game} active={index % games.length === activeIndex} />
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+};
+
+export default CarouselComponent;

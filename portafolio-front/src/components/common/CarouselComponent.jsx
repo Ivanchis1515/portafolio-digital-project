@@ -1,41 +1,70 @@
+//importaciones de react
 import React, { useState, useEffect, useRef } from 'react';
+//componentes de MUI
 import { Box, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
+//recursos
+import TeamH from '../../assets/images/logoADM.jpg';
+import Vite from '../../assets/images/svg/vite.svg';
+import PHPIcon from '../../assets/images/svg/php.svg';
+import ReactIcon from '../../assets/images/svg/react.svg';
+import BootstrapIcon from '../../assets/images/svg/bootstrap.svg';
+import JavaScriptIcon from '../../assets/images/svg/javascript.svg';
+import FigmaIcon from '../../assets/images/svg/figma.svg';
+import FirebaseIcon from '../../assets/images/svg/firebase.svg';
 
+//datos ficticios
 const games = [
   {
-    title: 'Dota 2',
-    description: 'Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/dota-2.jpg',
+    title: 'Team Hernández',
+    description: 'Sistema de gestión administrativa para un gimnasio centralizado para eficientizar los registros del gimnasio.',
+    imageUrl: TeamH,
+    urlProject: 'https://github.com/Ivanchis1515/TeamHernandez',
+    technologies: [
+      { name: 'Php', iconUrl: PHPIcon },
+      { name: 'JavaScript', iconUrl: JavaScriptIcon }
+    ],
   },
   {
-    title: 'The Witcher 3',
-    description: 'The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/winter-3.jpg',
+    title: 'FIX-PHONE',
+    description: 'Plataforma proveedora de servicios para los dispositivos moviles en multiples marcas.',
+    imageUrl: 'https://fix-phone-b464a.web.app/assets/logo-75013d93.png',
+    urlProject: 'https://fix-phone-b464a.web.app/',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+      { name: 'Firebase', iconUrl: FirebaseIcon },
+      { name: 'Figma', iconUrl: FigmaIcon }
+    ],
   },
   {
-    title: 'RDR 2',
-    description: 'RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/rdr-2.jpg',
+    title: 'Criptografia de transacciones',
+    description: 'A traves de la criptografía, se creo una plataforma de transacciones encriptadas.',
+    imageUrl: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/firebase_logo_icon_171157.png',
+    urlProject: 'https://cripto-270b6.firebaseapp.com/',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+      { name: 'Firebase', iconUrl: FirebaseIcon },
+      { name: 'Figma', iconUrl: FigmaIcon }
+    ],
   },
   {
-    title: 'PUBG Mobile',
-    description: 'PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/pubg.jpg',
+    title: 'React-WeatherApi',
+    description: 'Aplicacion de clima consumiendo la API de openweathermap, diagnosticos en tiempo real y diseño moderno.',
+    imageUrl: Vite,
+    urlProject: 'https://github.com/Ivanchis1515/React-WeatherAPIMap',
+    technologies: [
+      { name: 'React', iconUrl: ReactIcon },
+      { name: 'Bootstrap', iconUrl: BootstrapIcon },
+    ],
   },
-  {
-    title: 'Fortnite',
-    description: 'Battle royale where 100 players fight to be the last person standing. which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/fortnite.jpg',
-  },
-  {
-    title: 'Far Cry 5',
-    description: 'Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft. which was a community-created mod for Blizzard Entertainment\'s Warcraft III.',
-    imageUrl: 'https://www.yudiz.com/codepen/expandable-animated-card-slider/far-cry-5.jpg',
-  }
 ];
 
+//cartas por separado con la informacion 
 const GameCard = ({ game, active }) => (
+  //estas cartas reciben los atributos del arreglo games
   <Card
+    onClick={() => window.open(game.urlProject, '_blank')}
     sx={{
       margin: '0 15px',
       width: active ? '500px' : '320px',
@@ -61,6 +90,24 @@ const GameCard = ({ game, active }) => (
       },
     }}
   >
+        <Box
+      sx={{
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        display: 'flex',
+        gap: '8px',
+      }}
+    >
+      {game.technologies.map((tech, index) => (
+        <img
+          key={index}
+          src={tech.iconUrl}
+          alt={tech.name}
+          style={{ width: '24px', height: '24px' }}
+        />
+      ))}
+    </Box>
     <CardContent
       sx={{
         padding: '0 24px 12px',
@@ -83,9 +130,13 @@ const GameCard = ({ game, active }) => (
   </Card>
 );
 
+//componente principal
 const CarouselComponent = () => {
+  //variable para tomar las imagen actual
   const [currentIndex, setCurrentIndex] = useState(0);
+  //variable para guardar la imagen que esta activa
   const [activeIndex, setActiveIndex] = useState(0);
+  //detecta su la pantalla se redimensiona
   const isSmallerScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   const containerRef = useRef(null);
 

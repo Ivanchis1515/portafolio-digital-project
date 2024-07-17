@@ -1,0 +1,13 @@
+.image-container {
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    display: block;
+    margin-top: 2px;
+}
+
+.image-container:hover .tooltip {
+    visibility: visible;
+}
