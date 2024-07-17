@@ -121,38 +121,38 @@ const Home = () => {
                     </Grid>
                 </Grid>
                 {/* Sobre nosotros */}
-                
+
                 {/* Carrusel */}
                 <Grid container alignItems="center" justifyContent="center">
                     <Grid item xs={12}>
                         <Box sx={{ textAlign: 'center' }}>
-                        <Typography
-                            variant="h1"
-                            sx={{
-                            fontSize: matchesSM
-                                ? theme.typography.h3.fontSize
-                                : matchesMD
-                                ? theme.typography.h3.fontSize
-                                : theme.typography.h2.fontSize,
-                            }}
-                        >
-                            Proyectos
-                        </Typography>
+                            <Typography
+                                variant="h1"
+                                sx={{
+                                    fontSize: matchesSM
+                                        ? theme.typography.h3.fontSize
+                                        : matchesMD
+                                            ? theme.typography.h3.fontSize
+                                            : theme.typography.h2.fontSize,
+                                }}
+                            >
+                                Proyectos
+                            </Typography>
                         </Box>
                         <Box sx={{ textAlign: 'center', mt: 2 }}>
-                        <Typography variant="body1">
-                            Hecha un vistazo a los proyectos que han consolidado nuestra presencia en el mercado
-                        </Typography>
+                            <Typography variant="body1">
+                                Hecha un vistazo a los proyectos que han consolidado nuestra presencia en el mercado
+                            </Typography>
                         </Box>
                     </Grid>
                     <Grid item xs={12}>
                         <Box sx={{ overflow: 'hidden' }}>
-                        <CarouselComponent />
+                            <CarouselComponent />
                         </Box>
                     </Grid>
-                    </Grid>
+                </Grid>
                 {/* ./carrusel */}
-                
+
                 <Grid container spacing={1} alignItems="center" justifyContent="center">
                     <Grid item sm={12} lg={6}>
                         <Typography variant="h2" textAlign="center">
@@ -163,7 +163,7 @@ const Home = () => {
                         {/* <Skills /> */}
                     </Grid>
                 </Grid>
-                <ContactFooter/>
+                <ContactFooter />
             </Box>
         </>
     )
