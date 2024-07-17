@@ -1,12 +1,5 @@
-//importaciones de react
-import React, { useState, useEffect } from 'react';
-
-//componentes de estilo MUI
-import { Box, Typography, Card, CardContent, IconButton } from '@mui/material';
-
-//recursos
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
 
 const games = [
   {
@@ -41,11 +34,10 @@ const games = [
   }
 ];
 
-//componente personalizado card desplegable
-const GameCard = ({ game, active, onClick }) => (
+const GameCard = ({ game, active }) => (
   <Card
     sx={{
-      margin: '0 15px 60px',
+      margin: '0 15px',
       width: active ? '500px' : '320px',
       height: '400px',
       display: 'flex',
@@ -67,12 +59,7 @@ const GameCard = ({ game, active, onClick }) => (
         top: 0,
         backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
       },
-      '@media (max-width: 768px)': {
-        width: active ? '270px' : '200px',
-        height: '280px',
-      },
     }}
-    onClick={onClick}
   >
     <CardContent
       sx={{
@@ -96,81 +83,49 @@ const GameCard = ({ game, active, onClick }) => (
   </Card>
 );
 
-//funcion principal
 const CarouselComponent = () => {
-  //retoma la tarjeta desplegada
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const isSmallerScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const containerRef = useRef(null);
 
-  //abre la tarjeta
-  const handleCardClick = (index) => {
-    //actualiza el valor de la tarjeta seleccionada
-    setActiveIndex(index);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % (games.length * 2)); // Duplicamos la longitud
+    }, 3000); // Cambia cada 3 segundos
 
-  //retoma la siguiente tarjeta
-  const handleNext = () => {
-    // si se da click aumenta 1 la cantidad entre el numero de elementos totales
-    setActiveIndex((prevIndex) => (prevIndex + 1) % games.length);
-  };
+    return () => clearInterval(interval);
+  }, []);
 
-  //retoma la anterior tarjeta
-  const handlePrev = () => {
-    //actualiza el valor tomando el indice restandole uno entre el numero de elementos totales
-    setActiveIndex((prevIndex) => (prevIndex - 1 + games.length) % games.length);
-  };
-
-  // useEffect(() => {
-  //   const interval = setInterval(handleNext, 3000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    setActiveIndex(currentIndex % games.length); // Solo consideramos la longitud original para el índice activo
+  }, [currentIndex]);
 
   return (
-    <Box sx={{ padding: '60px 50px', position: 'relative' }}>
-      {/* <Typography variant="h2" sx={{
-        marginBottom: '48px',
-        paddingBottom: '16px',
-        fontSize: '20px',
-        lineHeight: '28px',
-        fontWeight: '700',
-        position: 'relative',
-        textTransform: 'capitalize',
-        width: '400px',
-        '&::before, &::after': {
-          content: '""',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          height: '4px',
-          borderRadius: '2px',
-        },
-        '&::before': {
-          width: '100%',
-          background: '#f2f2f2',
-        },
-        '&::after': {
-          width: '32px',
-          background: '#e73700',
-        }
-      }}>
+    <Box sx={{ padding: '60px 50px' }}>
+      <Typography variant="h2" sx={{ marginBottom: '48px', paddingBottom: '16px', fontSize: '20px', lineHeight: '28px', fontWeight: '700', position: 'relative', textTransform: 'capitalize', width: '400px', '&::before': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '100%', background: '#f2f2f2' }, '&::after': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '32px', background: '#e73700' } }}>
         trending games
-      </Typography> */}
-      <Box sx={{ display: 'flex', overflow: 'hidden', alignItems: 'center' }}>
-        <IconButton onClick={handlePrev} sx={{ position: 'absolute', left: 0, zIndex: 10 }}>
-          <ArrowBackIosNewIcon />
-        </IconButton>
-        <Box sx={{ display: 'flex', transition: 'transform 0.4s ease-in-out', transform: `translateX(-${activeIndex * 320}px)` }}>
-          {games.map((game, index) => (
-            <GameCard
-              key={index}
-              game={game}
-              active={index === activeIndex}
-              onClick={() => handleCardClick(index)}
-            />
-          ))}
-        </Box>
-        <IconButton onClick={handleNext} sx={{ position: 'absolute', right: 0, zIndex: 10 }}>
-          <ArrowForwardIosIcon />
-        </IconButton>
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          overflow: 'hidden',
+        }}
+        ref={containerRef}
+      >
+        {[...games, ...games].map((game, index) => ( // Duplicamos el array
+          <Box
+            key={index}
+            sx={{
+              minWidth: '320px',
+              flexShrink: 0,
+              transition: 'transform 0.5s ease-in-out',
+              transform: `translateX(-${currentIndex * 320}px)`,
+            }}
+          >
+            <GameCard game={game} active={index % games.length === activeIndex} />
+          </Box>
+        ))}
       </Box>
     </Box>
   );

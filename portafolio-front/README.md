@@ -81,9 +81,8 @@ npm install aos --save
 ```
 7. libreria para carrusel
 ```
-npm install slick-carousel react-slick
+npm install --save react-awesome-slider
 Importar la libreria
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import AwesomeSlider from 'react-awesome-slider';
+import AwsSliderStyles from 'react-awesome-slider/src/styles.scss';
 ```
