@@ -174,7 +174,7 @@ const CarouselComponent = () => {
   }, [currentIndex]);
 
   return (
-    <Box sx={{ padding: '60px 50px' }}>
+    <Box id="project" sx={{ padding: '60px 50px' }}>
       <Typography variant="h2" sx={{ marginBottom: '48px', paddingBottom: '16px', fontSize: '20px', lineHeight: '28px', fontWeight: '700', position: 'relative', textTransform: 'capitalize', width: '400px', '&::before': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '100%', background: '#f2f2f2' }, '&::after': { content: '""', position: 'absolute', bottom: 0, left: 0, height: '4px', borderRadius: '2px', width: '32px', background: '#e73700' } }}>
         trending games
       </Typography>

@@ -13,8 +13,10 @@ const SplineComponent = () => {
             <Box 
                 sx={{
                     width: '100%',
-        // height: '100%',
-        transform: 'scale(0.2)', // Ejemplo de escala al 50%
+                    // height: '100%',
+                    transform: 'scale(0.2)', // Ejemplo de escala al 50%
+                    alignItems:"left",
+                    justifyItems:"left"
                 }}
             >
                 <Spline 

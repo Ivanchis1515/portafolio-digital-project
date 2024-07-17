@@ -56,7 +56,7 @@ const ContactFooter  = () => {
   }
 
   return (
-    <Box sx={{ backgroundColor: '#000', color: '#fff', padding: 4 }}>
+    <Box id="footer" sx={{ backgroundColor: '#000', color: '#fff', padding: 4 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexDirection: isMobile ? 'column' : 'row' }}>
         <Box>
           <img src="/path-to-your-logo.png" alt="Logo" style={{ width: 50, height: 50 }} />

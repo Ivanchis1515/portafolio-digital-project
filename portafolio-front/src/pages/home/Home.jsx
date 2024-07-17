@@ -44,7 +44,7 @@ const Home = () => {
     const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
     return (
         <>
-            <Box>
+            <Box id="home">
                 <Navbar />
                 <Start />
                 {/* Sobre nosotros */}

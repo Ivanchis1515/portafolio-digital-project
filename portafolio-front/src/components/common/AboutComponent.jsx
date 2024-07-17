@@ -23,6 +23,7 @@ const AboutComponent = () => {
     return (
         <>
             <Container
+                id="about"
                 maxWidth="lg"
                 sx={{
                     display: 'flex',
