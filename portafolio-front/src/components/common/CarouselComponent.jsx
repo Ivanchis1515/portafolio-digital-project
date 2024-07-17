@@ -4,13 +4,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
 //recursos
 import TeamH from '../../assets/images/logoADM.jpg';
+import AMGALA from '../../assets/images/Amgala.jpeg';
 import Vite from '../../assets/images/svg/vite.svg';
-import PHPIcon from '../../assets/images/svg/php.svg';
-import ReactIcon from '../../assets/images/svg/react.svg';
-import BootstrapIcon from '../../assets/images/svg/bootstrap.svg';
-import JavaScriptIcon from '../../assets/images/svg/javascript.svg';
 import FigmaIcon from '../../assets/images/svg/figma.svg';
+import ReactIcon from '../../assets/images/svg/react.svg';
+import DjangoIcon from '../../assets/images/svg/python.svg';
+import BootstrapIcon from '../../assets/images/svg/bootstrap.svg';
+
+import PHPIcon from '../../assets/images/svg/php.svg';
+import JavaScriptIcon from '../../assets/images/svg/javascript.svg';
+import PythonIcon from '../../assets/images/svg/django.svg';
 import FirebaseIcon from '../../assets/images/svg/firebase.svg';
+
+import CssIcon from '../../assets/images/svg/css3.svg';
+import HTMLIcon from '../../assets/images/svg/html.svg';
 
 //datos ficticios
 const games = [
@@ -20,8 +27,10 @@ const games = [
     imageUrl: TeamH,
     urlProject: 'https://github.com/Ivanchis1515/TeamHernandez',
     technologies: [
-      { name: 'Php', iconUrl: PHPIcon },
-      { name: 'JavaScript', iconUrl: JavaScriptIcon }
+      { name: 'HTML', iconUrl: HTMLIcon },
+      { name: 'Css', iconUrl: CssIcon },
+      { name: 'JavaScript', iconUrl: JavaScriptIcon },
+      { name: 'Php', iconUrl: PHPIcon }
     ],
   },
   {
@@ -56,6 +65,18 @@ const games = [
     technologies: [
       { name: 'React', iconUrl: ReactIcon },
       { name: 'Bootstrap', iconUrl: BootstrapIcon },
+    ],
+  },
+  {
+    title: 'AMGALA',
+    description: 'Sistema de gestion de una empresa, ofrece un sentido descentralizado por lo que se considera un sistema robusta',
+    imageUrl: AMGALA,
+    urlProject: 'https://github.com/AngelLuna6969/Plantilla-Django',
+    technologies: [
+      { name: 'Django', iconUrl: DjangoIcon },
+      { name: 'Python', iconUrl: PythonIcon },
+      { name: 'Css', iconUrl: CssIcon },
+      { name: 'HTML', iconUrl: HTMLIcon },
     ],
   },
 ];

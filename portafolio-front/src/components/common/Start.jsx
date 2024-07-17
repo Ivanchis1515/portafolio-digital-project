@@ -7,6 +7,10 @@ import { useTheme } from '@mui/material/styles';
 //importacion de la libreria de diseño libre
 import { styled } from '@mui/system';
 
+//recursos
+import DarkModeGradient from '../../assets/images/svg/darkmode.svg';
+import LightModeGradient from '../../assets/images/svg/lightmode.svg';
+
 //creacion del nuevo modulo de imagen
 const Img = styled("img")({
   width: "50%",
@@ -22,6 +26,15 @@ const Img = styled("img")({
 const Start = () => {
   const theme = useTheme();
 
+  //obtener el tema actual
+  const getBackgroundImage = () => {
+    if (theme.palette.mode === 'dark') {
+      return `url(${DarkModeGradient})`;
+    } else {
+      return `url(${LightModeGradient})`;
+    }
+  };
+
   //media querys de MUI para detectar el tipo de pantalla
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -35,10 +48,7 @@ const Start = () => {
             id="hero"
             sx={{
               width: '100%',
-              backgroundImage:
-                theme.palette.mode === 'dark'
-                  ? `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`
-                  : 'linear-gradient(180deg, #CEE5FD, #FFF)',
+              backgroundImage:getBackgroundImage(),
               backgroundSize: '100% 20%',
               backgroundRepeat: 'no-repeat',
             }}

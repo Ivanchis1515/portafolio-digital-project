@@ -13,6 +13,7 @@ import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'; //icno sol
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded'; //icono luna
 import LinkedInIcon from '@mui/icons-material/LinkedIn'; //icono linkedin
 import GitHubIcon from '@mui/icons-material/GitHub'; //icono git
+import SplineComponent from '../common/SplineComponent'; //sppline
 
 const logoStyle = {
     width: '140px',
@@ -79,12 +80,13 @@ const Navbar = () => {
                                 px: 0
                             }}
                         >
-                            <img src={
+                            {/* <img src={
                                     'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
                                 }
                                 style={logoStyle}
                                 alt="logo of sitemark" 
-                            />
+                            /> */}
+                            <SplineComponent />
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 <MenuItem
                                     // onClick={() => ScrollToSection("Nombre_seccion")}

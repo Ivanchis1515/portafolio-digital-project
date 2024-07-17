@@ -86,3 +86,12 @@ Importar la libreria
 import AwesomeSlider from 'react-awesome-slider';
 import AwsSliderStyles from 'react-awesome-slider/src/styles.scss';
 ```
+8. libreria Spline
+```
+npm install @splinetool/react-spline
+Importar la libreria
+import Spline from '@splinetool/react-spline/next';
+INSTALAR
+npm install next
+
+```
