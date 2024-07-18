@@ -1,6 +1,6 @@
 //importaciones de React
-import * as React from 'react'; 
- //Biblioteca de componentes de interfaz de usuario para React.
+import * as React from 'react';
+//Biblioteca de componentes de interfaz de usuario para React.
 import ImageList from '@mui/material/ImageList';
 //Componente representa un elemento individual dentro de un "ImageList".
 import ImageListItem from '@mui/material/ImageListItem';
@@ -9,32 +9,26 @@ import ImageListItem from '@mui/material/ImageListItem';
  un título y una descripción o acciones.*/
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 
-const Skills = () => {
-    // Define un componente funcional llamado Skills
-  return (
-    <ImageList sx={{ width: 500, height: 450 }}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            actionIcon={<span>{item.description}</span>}
-            position="below"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-  );
-};
+//componentes de estilo MUI
+import { Container, Box, Typography, Grid, Divider } from '@mui/material';
 
+import ReactIcon from '../../assets/images/svg/react.svg';
+import DjangoIcon from '../../assets/images/svg/python.svg';
+import BootstrapIcon from '../../assets/images/svg/bootstrap.svg';
+
+import PHPIcon from '../../assets/images/svg/php.svg';
+import JavaScriptIcon from '../../assets/images/svg/javascript.svg';
+import PythonIcon from '../../assets/images/svg/django.svg';
+import FirebaseIcon from '../../assets/images/svg/firebase.svg';
+
+import CssIcon from '../../assets/images/svg/css3.svg';
+import HTMLIcon from '../../assets/images/svg/html.svg';
+
+
+//itemData: Un array de objetos, donde cada objeto representa un elemento en la cuadrícula
 const itemData = [
   {
-    img: 'https://img.icons8.com/?size=100&id=5cVdiiKKi0vX&format=png&color=000000',
+    img: 'https://img.icons8.com/?size=100&id=5cVdiiKKi0vX&format=png&color=000000%27',
     title: 'CSS',
     description: 'Lenguaje de diseño utilizado para definir la presentación y el estilo visual de páginas web',
   },
@@ -95,4 +89,66 @@ const itemData = [
   },
 ];
 
-export default Skills;
+export default function Skills() {
+  return (
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        textAlign: 'center',
+        pt: { xs: 10, sm: 20, lg: 12 },
+      }}
+      data-aos="fade-up"
+    >
+      <Grid
+        container
+        rowSpacing={1}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        alignItems="center"
+        justifyContent="center"
+        textAlign = "center">
+        <Grid item xs={3} sm={3} md={12} lg={12} order={{ xs: 2, md: 2, lg: 1 }}>
+          <ImageList
+            //Sistema de estilo (sx) de MUI para ajustar el ancho al 100% 
+            sx={{
+              width: '100%',
+              height: 'auto'
+            }}
+            //Organiza los elementos en una cuadrícula.
+            variant="quilted"
+            cols={12}
+            rowHeight={121}
+          >
+
+
+            {itemData.map((item) => (
+              //Se itera sobre el array
+              <ImageListItem
+                key={item.img}
+                cols={2}
+                rows={2}
+              >
+                <img
+                  srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${item.img}?w=248&fit=crop&auto=format`}
+                  alt={item.title}
+                  style={{ width: "50%", height: "50%" }}
+                  loading="lazy"
+                //Habilita la carga diferida (lazy loading) para optimizar el rendimiento.
+                />
+                <ImageListItemBar
+                  title={item.title}
+                  subtitle={<span>{item.description}</span>}
+                  position="below"
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Grid>
+
+      </Grid>
+    </Container>
+
+  );
+}

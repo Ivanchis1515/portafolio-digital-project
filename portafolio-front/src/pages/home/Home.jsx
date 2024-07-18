@@ -86,8 +86,8 @@ const Home = () => {
                             Habilidades que hemos adquirido a lo largo del tiempo
                         </Typography>
                     </Grid>
-                    <Grid item sm={12} lg={12}>
-                        {/* <Skills /> */}
+                    <Grid item textAlign="center" sm={12} lg={12}>
+                        <Skills />
                     </Grid>
                 </Grid>
                 <ContactFooter />
